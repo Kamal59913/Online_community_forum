@@ -1,0 +1,99 @@
+<%- include('partials/header') %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class="posts">
+        <div class="container mt-5">
+            <h4>Create Forumn</h4>
+            <div class="dropdown">
+                <form action="/topics" method="POST" enctype="multipart/form-data">
+
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Choose                </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <!-- <form action="/topics" method="POST" enctype="multipart/form-data"> -->
+                        <h6> Select Your Category </h6>
+                        <input type="checkbox" id="same" name="same" value="GeneralContent">
+                        <label for="same"> GeneralContent</label><br>
+                        <input type="checkbox" id="same" name="same" value="People">
+                        <label for="same"> People</label><br>
+                        <input type="checkbox" id="same" name="same" value="Science">
+                        <label for="same"> Science</label><br>
+                        <input type="checkbox" id="same" name="same" value="Technology">
+                        <label for="same"> Technology</label><br>
+                        <input type="checkbox" id="same" name="same" value="Coding">
+                        <label for="same"> Coding</label><br>
+                        <input type="checkbox" id="same" name="same" value="Interesting">
+                        <label for="same"> Interesting</label><br>
+                        <input type="checkbox" id="same" name="same" value="Discussion">
+                        <label for="same"> Discussion</label><br>
+                        <input type="checkbox" id="same" name="same" value="Games">
+                        <label for="same"> Games</label><br>
+                        <input type="checkbox" id="same" name="same" value="Sports">
+                        <label for="same"> Sports</label><br>
+                        <input type="checkbox" id="same" name="same" value="Facts">
+                        <label for="same"> Facts</label><br>
+                        <input type="checkbox" id="same" name="same" value="Psychology">
+                        <label for="same"> Psychology</label><br>
+                        <input type="checkbox" id="same" name="same" value="Philosophy">
+                        <label for="same"> Philosophy</label><br>
+                        <input type="checkbox" id="same" name="same" value="Buiseness">
+                        <label for="same"> Buiseness</label><br>
+                        <input type="checkbox" id="same" name="same" value="Nature">
+                        <label for="same"> Nature</label><br>
+                        <input type="checkbox" id="same" name="same" value="Art">
+                        <label for="same"> Art</label><br>
+                        <input type="checkbox" id="same" name="same" value="Math">
+                        <label for="same"> Math</label><br>
+                        <input type="checkbox" id="same" name="same" value="Entertainment">
+                        <label for="same"> Entertainment</label><br>
+                        <input type="checkbox" id="same" name="same" value="Music">
+                        <label for="same"> Music</label><br>
+                        <input type="checkbox" id="same" name="same" value="Politics">
+                        <label for="same"> Politics</label><br>
+                        <input type="checkbox" id="same" name="same" value="Literacy">
+                        <label for="same"> Literacy</label><br>
+                        <input type="checkbox" id="same" name="same" value="Lifestyle">
+                        <label for="same"> Lifestyle</label><br>
+                        <input type="checkbox" id="same" name="same" value="Others">
+                        <label for="same"> Other</label><br>
+                        <input type="checkbox" id="same" name="same" value="q&a">
+                        <label for="same"> Question/Answer</label><br>
+                        <!-- <label for="createtype"> Create your Own Genre </label> <br>
+                        <input id="sametype" name="createtype" required><br> -->
+                    </div>
+            </div>
+            <label for="createtype"> Create your Own Genre </label> <br>
+            <input id="sametype" name="createtype" required><br>
+            <h6> Start A new Conversation topics </h6>
+            <textarea id="sameea" name="textarea" rows="4" cols="50" required></textarea>
+            <br>
+            <label for="submit"> Subject: </label><br>
+            <input type="text" name="com" required>
+            <div class="custom-file mb-3">
+                <input type="file" name="file" id="file" class="custom-file-input" />
+                <label for="file" class="custom-file-label">Forumn icon</label>
+            </div>
+            <br> <br>
+            <button type="submit" name="currentcomId"> Create</button>
+
+            </form>
+        </div>
+    </div>
+    <script>
+        $("input:checkbox").on('click', function() {
+            //don't understand any of this Copy-pasted All of it from the internet
+            // in the handler, 'this' refers to the box clicked on
+            var $box = $(this);
+            if ($box.is(":checked")) {
+                // the name of the box is retrieved using the .attr() method
+                // as it is assumed and expected to be immutable
+                var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                // the checked state of the group/box on the other hand will change
+                // and the current value is retrieved using .prop() method
+                $(group).prop("checked", false);
+                $box.prop("checked", true);
+            } else {
+                $box.prop("checked", false);
+            }
+        });
+    </script>
+    <%- include('partials/second') %>

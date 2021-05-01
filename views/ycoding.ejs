@@ -1,0 +1,101 @@
+<%-include("partials/header"); -%>
+    <%-include("sidenav"); -%>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <div class="entire-home-page ">
+            <div class="posts">
+                <%loop.forEach(function(post){%>
+                    <%for(var i=0;i<post.communityposts.length;i++){%>
+                        <div class="home3">
+                            <emphasize> ✒ Posted By
+                                <%=post.communityposts[i].writer.name%> on
+                                    <%=post.communityposts[i].Date%>
+                            </emphasize>
+                            </h8>
+                            <h6>From
+                                <%=post.subject%>'s Forumn</h5>
+                                    <h6> <strong> <%= post.communityposts[i].title%> </strong>
+                                    </h6>
+                                    <%if(post.communityposts[i].communitypostsimage){%>
+                                        <img src="./uploads/<%=post.communityposts[i].communitypostsimage%>" style="width: 100%;">
+                                        <%};%>
+                                            <p>
+                                                <%= post.communityposts[i].postcontent.substring(1,2000)+"...";%>
+                                                    <a href="/composts/<%=post._id%>/<%=post.communityposts[i]._id%>">Load the entire page...</a>
+                                            </p>
+                                            <div class="form-group">
+                                                <button id="<%=post.communityposts[i]._id%>" class="btn btn-outline-danger btn-sm" value="<%=post.communityposts[i]._id%>"> <i class="fas fa-heart"></i> </button>
+
+                                                <h7 class="<%=post.communityposts[i]._id%>" name="rating">
+                                                    <%=post.communityposts[i].like.length%> Rating
+                                                </h7>
+                                                <i class="fas fa-comment-alt"></i>
+                                                <%=post.communityposts[i].comcomments.length%> <a href="/composts/<%=post._id%>/<%=post.communityposts[i]._id%>">Comments</a>
+                                            </div>
+
+                                            <script>
+                                                $(document).ready(function() {
+                                                    var $comlikes = $('.<%=post.communityposts[i]._id%>');
+                                                    var $incrementbyone = parseInt("<%=post.communityposts[i].like.length%>") + 1;
+                                                    $('#<%=post.communityposts[i]._id%>').on('click', function() {
+                                                        console.log($comlikes);
+                                                        console.log($incrementbyone);
+                                                        console.log($('#<%=post.communityposts[i]._id%>').val());
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            url: "/comlike/<%=post._id%>/<%=post.communityposts[i]._id%>",
+                                                            data: this.response,
+                                                            success: function(data) {
+                                                                if (data.status == "error") {
+                                                                    alert(data.message);
+                                                                } else {
+                                                                    $comlikes.html("Rating: " + $incrementbyone)
+                                                                }
+                                                            },
+                                                            err: function() {
+                                                                console.log("Unable to send post request");
+                                                            }
+                                                        })
+                                                    })
+                                                })
+                                            </script>
+                        </div>
+                        <%};%>
+                            <%});%>
+
+            </div>
+        </div>
+        <div class="forumns">
+            <p>Forumns in <strong>/Coding</strong> </p>
+            <%for(var i=loop.length-1;i>=0;i--){%>
+                <a href="/blank/<%=loop[i]._id%>">
+    <button class="btn btn-light btn-sm"value="<%=loop[i]._id%>" name="btn" onclick="this.form.submit()">
+    <%=loop[i].subject%></a></button>
+                <button class="btn btn-light btn-sm" id="<%=loop[i]._id%>" value="<%=loop[i].subject%>">Join</button>
+
+                <br>
+                <script>
+                    $(document).ready(function() {
+                        var button = "<%=user%>"
+                        $("#<%=loop[i]._id%>").on('click', function() {
+                            var value = {
+                                button: "<%=loop[i].subject%>"
+                            }
+                            console.log(button);
+                            $("#<%=loop[i]._id%>").html("Joined");
+                            $.ajax({
+                                type: "POST",
+                                url: "/requestjoin/<%=loop[i]._id%>",
+                                data: {
+                                    button: button
+                                },
+                                success: function(data) {
+                                    console.log("success");
+
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <%};%>
+        </div>
+        <%-include("partials/footer"); -%>

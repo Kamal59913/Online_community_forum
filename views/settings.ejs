@@ -1,0 +1,68 @@
+<%- include('partials/header') %>
+    <h1>Complete Your Profile</h1>
+    <div class="posts">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <%loop.forEach(function(items){%>
+                        <%if(items._id==user){%>
+                            <%if(items.profileimage){%>
+                                <img src="uploads/<%=items.profileimage%>" style="width:95px; height: 95px; float: left; border-radius: 50%; border:none">
+                                <%}else{%>
+                                    <img src="<%=items.googleprofileimage%>" style="width:95px; height: 95px; float: left; border-radius: 50%;">
+                                    <%};%>
+
+                                        <p style="border-bottom: 1px solid black;">
+                                            <%=items.name%>
+                                        </p>
+                                        <%}%>
+                                            <%});%>
+                                                <h8> Your Account </h8>
+                                                <div class="card-body">
+                                                    <!-- Makes POST request to /register route -->
+                                                    <form action="/MyAccount" method="POST" enctype="multipart/form-data">
+                                                        <div class="custom-file mb-3">
+                                                            <input type="file" name="file" id="file" class="custom-file-input" />
+                                                            <label for="file" class="custom-file-label">Profile image</label>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password">FullName</label>
+                                                            <input type="text" class="form-control" name="fullname">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password">Academics</label>
+                                                            <input type="text" class="form-control" name="academics">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password">Institute</label>
+                                                            <input type="text" class="form-control" name="institute">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password">City Name</label>
+                                                            <input type="text" class="form-control" name="cityname">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password">Phone Number</label>
+                                                            <input type="text" class="form-control" name="phonenumber">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password">EmailId</label>
+                                                            <input type="text" class="form-control" name="emailid">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password">Address</label>
+                                                            <input type="text" class="form-control" name="address">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password">PIN</label>
+                                                            <input type="text" class="form-control" name="pincode">
+                                                        </div>
+                                                        <br>
+                                                        <button type="submit" class="btn btn-warning">Cool</button>
+                                                    </form>
+
+                                                </div>
+                </div>
+            </div>
+        </div>
+        <%- include('partials/second') %>

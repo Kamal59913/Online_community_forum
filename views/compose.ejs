@@ -1,0 +1,19 @@
+<%-include("partials/header"); -%>
+    <div class="posts">
+        <form name="" method="POST" action="/compose/<%=items%>" enctype="multipart/form-data">
+            <div class="form-group">
+                <label name="postTopic">Topic</label>
+                <input class="form-control" type="text" name="postTopic">
+                <label name="postTitle">Title</label>
+                <input class="form-control" type="text" name="postTitle">
+                <label name="postarticle">Post</label>
+                <textarea class="form-control" name="postarticle" rows="8" cols="80"></textarea>
+            </div>
+            <div class="custom-file mb-3">
+                <input type="file" name="file" id="file" class="custom-file-input" />
+                <label for="file" class="custom-file-label"></label>
+            </div>
+            <button class="btn btn-primary" type="submit" name="button">Publish</button>
+        </form>
+    </div>
+    <%-include("partials/footer"); -%>

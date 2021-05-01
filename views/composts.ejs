@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <!-- <title><img src="/logodemo.png"></title> -->
+    <meta charset="utf-8">
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/chatting.css">
+</head>
+
+<body style="background-color: rgb(63, 74, 76);">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <!-- <img src="/public/trial4.png" style="height: 40px;"> -->
+            <i class="fas fa-folder-open"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home feeds <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/articles">Article Feeds <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Options
+                </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/webdev">Web Dev</a>
+                        <a class="dropdown-item" href="/androiddev">Android Dev</a>
+                        <a class="dropdown-item" href="/java">Java</a>
+                        <a class="dropdown-item" href="/freelanching">freelanching</a>
+                        <a class="dropdown-item" href="/life">LifeStyle</a>
+                        <a class="dropdown-item" href="/music">Music</a>
+                        <a class="dropdown-item" href="/photography">Photography</a>
+                        <a class="dropdown-item" href="/cplusplus">C++</a>
+                        <a class="dropdown-item" href="/mern">MERN</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/compose">Something else...</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/forumns">Forumn</a>
+                </li>
+
+            </ul>
+
+
+            <a class="nav-link" href="/users"><i class="fas fa-plus"></i> Manage Users/ADMIN</a>
+            <a class="nav-link" href="/moderator"><i class="fas fa-plus"></i> MODERATOR LOGIN</a>
+            <a class="nav-link" href="/registering"> Sign Up</a>
+
+
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-snowman"></i>MyAccount
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/MyAccount">Create Forumn</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/Settings">Manage Your Profile</a>
+                    <a class="dropdown-item" href="/joined forum">Joined Forumns </a>
+                    <a class="dropdown-item" href="/MyAccount">Create community </a>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/logout">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class="posts2">
+        <%composts.forEach(function(post){%>
+            <%for(var i=0;i<post.communityposts.length;i++){%>
+                <%if(post.communityposts[i]._id==compostId) {%>
+                    <div class="post">
+                        <%if(post.comimage){%>
+                            <img src="uploads/<%=post.comimage%>" style="width:24px; height: 24px; float: left; border-radius: 50%;">
+                            <%}%>
+                                <strong>
+                                /<%=post.subject%> </strong>
+                                <h8>Posted by
+                                    <%=post.communityposts[i].writer.name%>,
+                                        <%=post.communityposts[i].Date%>
+                                </h8>
+                                <br>
+                                <h6>
+                                    <%= post.communityposts[i].title%>
+                                </h6>
+                                <p>
+                                    <%post.communityposts[i].communitypostsimage%>
+                                </p>
+                                <%if(post.communityposts[i].communitypostsimage){%>
+                                    <p>
+                                        <img src="/uploads/<%=post.communityposts[i].communitypostsimage%>" style="width: 100%;">
+                                    </p>
+                                    <!-- <img src="./uploads/<%=//post.communityposts[i].communitypostsimage%>" style="width: 100%;"> -->
+                                    <%};%>
+                                        <%//if(post.communityposts[i].communitypostsimage){%>
+                                            <!-- <img src="./uploads/<%=//post.communityposts[i].communitypostsimage%>" style="width: 100%;"> -->
+                                            <%//};%>
+                                                <p>
+                                                    <%= post.communityposts[i].postcontent%>
+                                                </p>
+                                                <p id="data" style="float: left;">
+                                                    <strong>  <%=post.communityposts[i].like.length%> </strong>
+                                                </p>
+                                                <div class="form-group" style="float: left;">
+                                                    <button id="like" class="btn btn-outline-danger btn-sm" name="upvote" value="<%=post.communityposts[i]._id%>"> <i class="far fa-heart"></i> Upvote</button>
+                                                    <form action="/comunlike/<%=post._id%>" method="POST" style="float: right;">
+                                                        <button id="unlike" class="btn btn-outline-warning btn-sm" name="unvote" value="<%=post.communityposts[i]._id%>" onclick="this.form.submit()"></h4><i class="fas fa-heart-broken"></i>  Unvote</button>
+                                                    </form>
+                                                </div>
+                                                <br>
+
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            $data = $("#data");
+                            $val = $("#like").val();
+                            $('#like').on('click', function() {
+                                $incrementlikebyone = parseInt("<%=post.communityposts[i].like.length%>") + 1;
+                                console.log("Hi");
+                                console.log($val);
+                                //console.log($incrementlikebyone);
+                                console.log($data);
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/comlike/<%=post._id%>/<%=post.communityposts[i]._id%>',
+                                    data: this.response,
+                                    success: function(data) {
+                                        if (data.status == "error") {
+                                            alert("You have already likde it" + data.liked)
+                                        } else {
+                                            console.log("Success");
+                                            $data.html($incrementlikebyone);
+                                        }
+                                    }
+                                })
+                            })
+                        });
+                    </script>
+                    <br>
+                    <!--Can be deleted If the auther is the user itself -->
+
+                    <div class="bottomcomment">
+                        <%if(userId==post.communityposts[i].writer._id){%>
+                            <div class="custom-control custom-checkbox" style="float: right;">
+                                <form action="/delete" method="POST" class="item">
+                                    <input id="customCheck1" type="checkbox" name="checkbox" value="<%=post._id%>" onChange="this.form.submit()">
+                                    <label for="customCheck1">❌ Delete Your Post</label>
+                                </form>
+
+                            </div>
+                            <%};%>
+                                <br>
+                                <h8><em>Comment as</em>
+                                    <%=name%>
+                                </h8>
+                                <%//for(var i=0;i<post.communityposts.length;i++) {%>
+                                    <div class="form-group">
+                                        <label for="commessage">
+                                        <textarea name="commessage" id="commessage" cols="90" rows="4" placeholder="Write about your thoughts"></textarea>
+                                    <button type="submit" class="btn btn-dark btn-sm" name="btnmessage" id="btnmessage">Send</button>
+
+                                </div>
+                                <div id="name" class="messagesender"></div>
+                                <div id="message" class="message"></div>
+
+                                <script>
+                                    $(document).ready(function() {
+
+                                        $name = $("#name");
+                                        $message = $('#message');
+                                        $commessage = $("#commessage");
+                                        $('#btnmessage').on('click', function() {
+                                            // var order = {
+                                            //     input: $commessage.val()
+                                            // }
+                                            var input = $commessage.val();
+                                            console.log($commessage.val());
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: "/composts/<%=post._id%>/<%=post.communityposts[i]._id%>",
+                                                data: { //Whatever we want to send we write it right here
+                                                    input: input //this is how we send value
+                                                },
+                                                success: function() {
+                                                    console.log("<%=post._id%>");
+                                                    console.log("Sucess");
+                                                    $name.prepend("<b><br> <%=name%>:</b> <p>");
+                                                    // + $commessage.val() + "</p>"
+                                                    $message.prepend("<p>" + $commessage.val() + "</p>");
+                                                }
+                                            })
+                                        })
+                                    })
+                                </script>
+                                    <%for(var j=0;j<post.communityposts[i].comcomments.length;j++){%>
+                                        <div class="messagesender">
+                                            <b>
+                                            <em>    <%=post.communityposts[i].comcomments[j].username.name%>: </em>
+                                    </b>
+        </div>
+        <div id="message">
+            <p>
+                <%=post.communityposts[i].comcomments[j].message%>
+            </p>
+            <form action="/upvote" method="POST" style="float: left;"> 
+<button class="btn btn-light btn-sm"> <u> Upvote</u> </button>
+            </form>
+            <form action="/edit" method="POST" style="float: left;"> 
+                <button class="btn btn-light btn-sm"><u>Edit</u></button>
+                            </form>
+                            <form action="/delete" method="POST"> 
+                                <button class="btn btn-light btn-sm"><u>Delete</u></button>
+                                            </form>
+    </div>
+<p><em>Replies on this Comment</em></p>
+    <div class="replysection">
+<%for(var k=0;k<post.communityposts[i].comcomments[j].comcommentreplies.length;k++){%>
+<%if(post.communityposts[i].comcomments[j].comcommentreplies[k].replymessage){%>
+    <h8><strong><%=post.communityposts[i].comcomments[j].comcommentreplies[k].replyuser.name%></strong></h8>
+    <p><%=post.communityposts[i].comcomments[j].comcommentreplies[k].replymessage%></p>
+    <form action="/upvote" method="POST" style="float: left;"> 
+        <button class="btn btn-light btn-sm"> <u> Upvote</u> </button>
+                    </form>
+                    <form action="/edit" method="POST" style="float: left;"> 
+                        <button class="btn btn-light btn-sm"><u>Edit</u></button>
+                                    </form>
+                                    <form action="/delete" method="POST"> 
+                                        <button class="btn btn-light btn-sm"><u>Delete</u></button>
+                                                    </form>
+        <div class="replylayer2">
+            <%for(var l=0;l<post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2.length;l++){%>
+                <%if(post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer2message){%>    
+                    <h8><strong><%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer2user.username%></strong></h8>
+                    <p><%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer2message%></p>
+                    <form action="/upvote" method="POST" style="float: left;"> 
+                        <button class="btn btn-light btn-sm"> <u> Upvote</u> </button>
+                                    </form>
+                                    <form action="/edit" method="POST" style="float: left;"> 
+                                        <button class="btn btn-light btn-sm"><u>Edit</u></button>
+                                                    </form>
+                                                    <form action="/delete" method="POST"> 
+                                                        <button class="btn btn-light btn-sm"><u>Delete</u></button>
+                                                                    </form>
+          
+                        <div class="replylayer3">
+                        <%for(var m=0;m<post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3.length;m++){%>
+                            <%if(post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3[m].replylayer3message){%>    
+                          <h1> </h1>
+                                <h8><strong><%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3[m].replylayer3user.name%></strong></h8>
+                                <p><%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3[m].replylayer3message%></p>
+                                <form action="/upvote" method="POST" style="float: left;"> 
+                                    <button class="btn btn-light btn-sm"> <u> Upvote</u> </button>
+                                                </form>
+                                                <form action="/edit" method="POST" style="float: left;"> 
+                                                    <button class="btn btn-light btn-sm"><u>Edit</u></button>
+                                                                </form>
+                                                                <form action="/delete" method="POST"> 
+                                                                    <button class="btn btn-light btn-sm"><u>Delete</u></button>
+                                                                                </form>
+                               <div class="replylayer4">
+                                <%for(var n=0;n<post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3[m].replylayer4.length;n++){%>
+                                    <h8><strong><%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3[m].replylayer4[n].replylayer4user.username%></strong></h8>
+                                    <br>
+                                    <%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3[m].replylayer4[n].replylayer4message%>
+                                    <br>
+                                    <form action="/upvote" method="POST" style="float: left;"> 
+                                        <button class="btn btn-light btn-sm"> <u> Upvote</u> </button>
+                                                    </form>
+                                                    <form action="/edit" method="POST" style="float: left;"> 
+                                                        <button class="btn btn-light btn-sm"><u>Edit</u></button>
+                                                                    </form>
+                                                                    <form action="/delete" method="POST"> 
+                                                                        <button class="btn btn-light btn-sm"><u>Delete</u></button>
+                                                                                    </form>
+                                    <%}%>
+                                    </div>
+                                <div class="<%=//post.communityposts[i].comcomments[j]._id%>">
+                                    <button id="<%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3[m]._id%>" class="btn btn-light btn-sm"><i class="fas fa-comment-alt"></i>Reply</button>
+                                    </div>
+                                    
+                                     <div class="<%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3[m]._id%>" style="display: none;">
+                                    <form action="/replycomposts/<%=post._id%>/<%=post.communityposts[i]._id%>/<%=post.communityposts[i].comcomments[j]._id%>/<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>/<%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l]._id%>/<%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3[m]._id%>" method="POST">
+                                        <textarea name="replylayer3" id="replylayer3" cols="30" rows="7" placeholder="Your reply..."></textarea>
+                                        <button name="btnreply" class="btn btn-dark btn-sm" id="btnreply"> Send </button>
+                                    </form>
+                                    </div>
+                               
+                            <script>
+                                    $(document).ready(function(){
+                                    $("#<%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3[m]._id%>").on("click",function(){
+                                    $(".<%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l].replylayer3[m]._id%>").toggle();
+                                    console.log("<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>");
+                                    console.log("This is a success");
+                                    console.log("<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>");
+                                    });
+                                    });
+                                </script>
+                                <%}%>
+                        <%}%>
+                        </div>
+                        <div class="<%=//post.communityposts[i].comcomments[j]._id%>">
+                            <button id="<%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l]._id%>" class="btn btn-light btn-sm"><i class="fas fa-comment-alt"></i>Reply</button>
+                            </div>
+                            
+                             <div class="<%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l]._id%>" style="display: none;">
+                            <form action="/replycomposts/<%=post._id%>/<%=post.communityposts[i]._id%>/<%=post.communityposts[i].comcomments[j]._id%>/<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>/<%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l]._id%>" method="POST">
+                                <textarea name="replylayer2" id="replylayer2" cols="30" rows="7" placeholder="Your reply..."></textarea>
+                                <button name="btnreply" class="btn btn-dark btn-sm" id="btnreply"> Send </button>
+                            </form>
+                            </div>
+                    
+                    <script>
+                            $(document).ready(function(){
+                            $("#<%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l]._id%>").on("click",function(){
+                            $(".<%=post.communityposts[i].comcomments[j].comcommentreplies[k].replylayer2[l]._id%>").toggle();
+                            console.log("<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>");
+                            console.log("This is a success");
+                            console.log("<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>");
+                            });
+                            });
+                        </script>
+                    <%}%>
+                    <%}%>
+        </div>
+        <div class="<%=//post.communityposts[i].comcomments[j]._id%>">
+            <button id="<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>" class="btn btn-light btn-sm"><i class="fas fa-comment-alt"></i>Reply</button>
+            </div>
+            
+             <div class="<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>" style="display: none;">
+            <form action="/replycomposts/<%=post._id%>/<%=post.communityposts[i]._id%>/<%=post.communityposts[i].comcomments[j]._id%>/<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>" method="POST">
+                <textarea name="replylayer1" id="replylayer1" cols="30" rows="7" placeholder="Your reply..."></textarea>
+                <button name="btnreply" class="btn btn-dark btn-sm" id="btnreply"> Send </button>
+            </form>
+            </div>
+        <script>
+            $(document).ready(function(){
+            $("#<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>").on("click",function(){
+            $(".<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>").toggle();
+            console.log("<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>");
+            console.log("This is a success");
+            console.log("<%=post.communityposts[i].comcomments[j].comcommentreplies[k]._id%>");
+            });
+            });
+        </script>
+        <%}%>
+        <%}%>
+    </div>
+        <div class="<%=//post.communityposts[i].comcomments[j]._id%>">
+            <button id="<%=post.communityposts[i].comcomments[j]._id%>" class="btn btn-light btn-sm"><i class="fas fa-comment-alt"></i>Reply</button>
+            </div>
+
+<div class="<%=post.communityposts[i].comcomments[j]._id%>" style="display: none;">
+<form action="/replycomposts/<%=post._id%>/<%=post.communityposts[i]._id%>/<%=post.communityposts[i].comcomments[j]._id%>" method="POST">
+    <textarea name="reply" id="reply" cols="30" rows="7" placeholder="Your reply..."></textarea>
+    <button name="btnreply" class="btn btn-dark btn-sm" id="btnreply"> Send </button>
+</form>
+</div>
+
+
+ 
+<script>
+ $(document).ready(function(){
+        $("#<%=post.communityposts[i].comcomments[j]._id%>").on("click",function(){
+        $(".<%=post.communityposts[i].comcomments[j]._id%>").toggle();
+        console.log("<%=post.communityposts[i].comcomments[j]._id%>");
+        console.log("This is a success");
+        console.log("<%=post.communityposts[i].comcomments[j]._id%>");
+        });
+        });
+</script>
+
+
+        <%};%>
+
+            <%};%>
+                <%};%>
+                    <%});%>
+                            </div>
+                            <br><br><br><br>
+                        <%composts.forEach(function(post){%>
+                            <form action="/comdiscussion/<%=post._id%>" method="POST">
+                                <div class="form-group">
+                                    <label for="email"><h5><em> Forum Review</em></h5></label>
+                                        <br>
+                                        <input type="text" class="s" name="message">
+                                        <button type="submit" class="btn btn-info btn-sm"><h6><em>Send</em> </h6></button>
+                                        </form>
+                                    </div>
+
+                                    <%for(var i=0;i<post.comments.length;i++) {%>
+                                        <h8>
+                                            <em>   <%=post.comments[i].username.name%>: </em>
+                                        </h8>
+                                        <h6>
+                                            <%=post.comments[i].message%>
+                                        </h6>
+
+                                        <%}%>
+                                            <a href="/chat"><i class="fas fa-comment-dots"></i>
+                        Public suggestion/Review about this website </a>
+
+                                            <%});%>
+                    </div>
+</body>
+<%-//include("partials/footer"); -%>

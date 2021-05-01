@@ -1,0 +1,336 @@
+<%-include("partials/header"); -%>
+    <%-include("sidenav"); -%>
+        <%items.forEach(function(items){%>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <div class="entire-home-page ">
+                <div class="posts">
+                    <div id="write">
+                        <%if(items._id==user){%>
+                            <%if(items.profileimage){%>
+                                <img src="uploads/<%=items.profileimage%>" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Create Post" style="width:500px; float: left;">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="far fa-image"></i></span>
+                                    <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                </div>
+                                <%}else{%>
+                                    <div class="input-group">
+                                        <img src="<%=items.googleprofileimage%>" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Create Post" style="width:500px; float: left;">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="far fa-image"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                        </div>
+                                    </div>
+                                    <%}%>
+                                        <%}%>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    $('#write').on('click', function() {
+                                                        $('#write').load("chooseposts")
+                                                    });
+                                                });
+                                            </script>
+                    </div>
+                    <%});%>
+                        <br>
+                        <%allpost.forEach(function(post){%>
+                            <%for(var i=0;i<post.communityposts.length;i++){%>
+                                <div class="home">
+                                    <%if(post.comimage){%>
+                                        <img src="uploads/<%=post.comimage%>" style="width:24px; height: 24px; float: left; border-radius: 50%;">
+                                        <%}%>
+                                            <strong>
+                                            /<%=post.category%>/<%= post.communityposts[i].title%></strong>
+                                            <h8>Posted by
+                                                <%=post.communityposts[i].writer.name%>,
+                                                    <%=post.communityposts[i].Date%>
+                                            </h8>
+                                            <br>
+                                            <h5> <strong> <%= post.communityposts[i].title%> </strong>
+                                            </h5>
+                                            <%if(post.communityposts[i].communitypostsimage){%>
+                                                <img src="./uploads/<%=post.communityposts[i].communitypostsimage%>" style="width: 100%;">
+                                                <%};%>
+                                                    <p>
+                                                        <%= post.communityposts[i].postcontent.substring(1,2000)+"...";%>
+                                                            <a href="/composts/<%=post._id%>/<%=post.communityposts[i]._id%>">Load the entire page...</a>
+                                                    </p>
+                                                    <div class="form-group">
+                                                        <button id="<%=post.communityposts[i]._id%>" class="btn btn-outline-danger btn-sm" value="<%=post.communityposts[i]._id%>"> <i class="fas fa-heart"></i> </button>
+                                                        <h7 class="<%=post.communityposts[i]._id%>" name="rating">
+                                                            <%=post.communityposts[i].like.length%> Rating </h7>
+
+
+                                                        <i class="fas fa-comment-alt"></i>
+                                                        <%=post.communityposts[i].comcomments.length%> <a href="/composts/<%=post._id%>/<%=post.communityposts[i]._id%>">Comments</a>
+                                                    </div>
+                                                    <div>
+                                                        <a class="reportbutton dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                                        </a>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                            <li> <button id="<%=post.communityposts[i].reportId%>" class="btn btn-secondary btn-sm">  <i class="fas fa-flag"></i> Report
+                                                                </button>
+                                                                <li> <button class="btn btn-light btn-sm">
+                                                                        <i class="fas fa-eye-slash"></i> Hide for me
+                                                                    </button>
+                                                                </li>
+                                                        </div>
+
+                                                        <div class="<%=post.communityposts[i].reportId%>" style="display: none; float: right;">
+                                                            <form action="/report/<%=post._id%>/<%=post.communityposts[i]._id%>" method="POST">
+                                                                <div class="reportstyling">
+                                                                    <select class="form-select" size="3" aria-label="size 3 select example" name="choosed" style="height:400px;">
+                                                                         <option value="Breaks /<%=post.subject%>'s Rules">Breaks /<%=post.subject%>'s Rules</option>       
+                                                                            <option value="Harrasement">Harrasement</option>
+                                                                            <option value="Threatening violence">Threatening violence</option>
+                                                                            <option value="Hate">Hate</option>
+                                                                            <option value="Sexual Offence">Sexual Offence</option>
+                                                                            <option value="Sharing personal information">Sharing personal information</option>
+                                                                            <option value="Ivolutionary pornography">Ivolutionary pornography</option>
+                                                                            <option value="Impersonation">Impersonation</option>
+                                                                            <option value="Copyright violation">Copyright violation</option>
+                                                                            <option value="Trademark violation">Trademark violation</option>
+                                                                            <option value="Self-harm or suicide">Self-harm or suicide</option>
+                                                                            <option value="Spam">Spam</option>
+                                                                            <option value="Misinformation">Misinformation</option>
+                                                                            <option value="Unauthorised Sales or Buiseness">Unauthorised Sales or Buiseness</option>
+                                                                        </select>
+                                                                    <br>
+                                                                    <textarea id="textarea" name="textarea" rows="4" cols="50" placeholder="Tell us more..."></textarea>
+                                                                    <br>
+                                                                    <button type="submit" class="btn btn-primary btn-sm"> Submit </button>
+                                                                </div>
+
+                                                            </form>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <script>
+                                                        $(document).ready(function() {
+                                                            $("#<%=post.communityposts[i].reportId%>").on("click", function() {
+                                                                $(".<%=post.communityposts[i].reportId%>").toggle();
+                                                                console.log("<%=post.communityposts[i].title%>");
+                                                                console.log("This is a success");
+                                                                console.log("<%=post.communityposts[i].title%>");
+                                                            });
+                                                        });
+                                                    </script>
+                                                    <script>
+                                                        $(document).ready(function() {
+                                                            var $comlikes = $('.<%=post.communityposts[i]._id%>');
+                                                            var $incrementbyone = parseInt("<%=post.communityposts[i].like.length%>") + 1;
+                                                            $('#<%=post.communityposts[i]._id%>').on('click', function() {
+                                                                console.log($comlikes);
+                                                                console.log($incrementbyone);
+                                                                console.log($('#<%=post.communityposts[i]._id%>').val());
+                                                                $.ajax({
+                                                                    type: "POST",
+                                                                    url: "/comlike/<%=post._id%>/<%=post.communityposts[i]._id%>",
+                                                                    data: this.response,
+                                                                    success: function(data) {
+                                                                        if (data.status == "error") {
+                                                                            alert(data.message);
+                                                                        } else {
+                                                                            $comlikes.html($incrementbyone + " Rating")
+                                                                        }
+                                                                    },
+                                                                    err: function() {
+                                                                        console.log("Unable to send post request");
+                                                                    }
+                                                                })
+                                                            })
+                                                        })
+                                                    </script>
+
+                                </div>
+                                <%};%>
+
+                                    <%});%>
+                </div>
+
+            </div>
+
+            <div class="forumns">
+                <div class="forumnsclassstyle">
+                    <h6> Recent Communities </h6>
+                </div>
+                <!-- because we want to show only last 5 inserted Forumns -->
+                <ol>
+                    <%for(var i=posts2.length-1;i>=0;i--){%>
+                        <li>
+                            <%if(posts2[i].comimage){%>
+                                <img src="/uploads/<%=posts2[i].comimage%>" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                                <%}else{%>
+                                    <img src="cartoon.jpg" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                                    <%};%>
+                                        <a href="/blank/<%=posts2[i]._id%>" style="color: #000000; text-decoration: none">
+                    <button id="btnf" class="btn btn-light btn-sm text-left"value="<%=posts2[i]._id%>" name="btn" onclick="this.form.submit()">
+                    /<%=posts2[i].subject%>
+            </a>
+                                        </button>
+                                        <button class="btn btn-light btn-sm" id="<%=posts2[i]._id%>" value="<%=posts2[i].subject%>">Join</button>
+                                        <br>
+                                        <br>
+                                        <script>
+                                            $(document).ready(function() {
+                                                // Here the commented things are not working
+                                                var button = "<%=user%>"
+                                                $("#<%=posts2[i]._id%>").on('click', function() {
+                                                    var value = {
+                                                        button: "<%=posts2[i].subject%>"
+                                                    }
+                                                    console.log(button);
+                                                    $("#<%=posts2[i]._id%>").html("Joined");
+                                                    $.ajax({
+                                                        type: "POST",
+                                                        url: "/requestjoin/<%=posts2[i]._id%>",
+                                                        data: {
+                                                            button: button
+                                                        },
+                                                        success: function(data) {
+                                                            console.log(button);
+
+                                                        },
+                                                        err: function() {
+                                                            console.log("Failed to upload");
+                                                        }
+
+                                                    })
+                                                })
+
+                                            })
+                                        </script>
+                        </li>
+                        <%};%>
+                </ol>
+                <div class="viewall">
+                    <a href="/forumns" style="color: #ffffff; text-decoration: none">View all</a>
+                </div>
+            </div>
+
+            <div class="viewall2">
+                <div class="forumnsclassstyle2">
+                    <h6> Trending Communities </h6>
+                </div>
+                <!-- because we want to show only last 5 inserted Forumns -->
+                <ol>
+                    <%for(var i=toberanked.length-1;i>=0;i--){%>
+                        <li>
+                            <%if(posts2[i].comimage){%>
+                                <img src="/uploads/<%=toberanked[i].comimage%>" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                                <%}else{%>
+                                    <img src="cartoon.jpg" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                                    <%};%>
+                                        <a href="/blank/<%=toberanked[i]._id%>" style="color: #000000; text-decoration: none">
+                    <button id="btnf" class="btn btn-light btn-sm text-left"value="<%=toberanked[i]._id%>" name="btn" onclick="this.form.submit()">
+                    /<%=toberanked[i].subject%>
+            </a>
+                                        </button>
+                                        <button class="btn btn-light btn-sm" id="<%=toberanked[i]._id%>" value="<%=toberanked[i].subject%>">Join</button>
+                                        <br>
+                                        <br>
+
+
+                                        <script>
+                                            $(document).ready(function() {
+                                                // Here the commented things are not working
+                                                var button = "<%=user%>"
+                                                $("#<%=toberanked[i]._id%>").on('click', function() {
+                                                    var value = {
+                                                        button: "<%=toberanked[i].subject%>"
+                                                    }
+                                                    console.log(button);
+                                                    $("#<%=toberanked[i]._id%>").html("Joined");
+                                                    $.ajax({
+                                                        type: "POST",
+                                                        url: "/requestjoin/<%=toberanked[i]._id%>",
+                                                        data: {
+                                                            button: button
+                                                        },
+                                                        success: function(data) {
+                                                            console.log("HiHiHi" + button);
+
+                                                        },
+                                                        err: function() {
+                                                            console.log("Failed to upload");
+                                                        }
+
+                                                    })
+                                                })
+
+                                            })
+                                        </script>
+                        </li>
+                        <%};%>
+                </ol>
+                <div class="viewall">
+                    <a href="/trending" style="color: #ffffff; text-decoration: none">View all</a>
+                </div>
+
+            </div>
+            <div class="trending">
+                <div class="forumnsclassstyle3">
+                    <h6>Top Finance & Buiseness Communities</h6>
+
+                </div>
+                <ol>
+                    <%for(var i=toberankedparticular.length-1;i>=0;i--){%>
+                        <%if(toberankedparticular[i].category=="Coding"){%>
+                            <li>
+                                <%if(toberankedparticular[i].comimage){%>
+                                    <img src="/uploads/<%=toberankedparticular[i].comimage%>" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                                    <%}else{%>
+                                        <img src="cartoon.jpg" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                                        <%};%>
+                                            <a href="/blank/<%=toberankedparticular[i]._id%>" style="color: #000000; text-decoration: none">
+                    <button id="btnf" class="btn btn-light btn-sm text-left"value="<%=toberankedparticular[i]._id%>" name="btn" onclick="this.form.submit()">
+                    /<%=toberankedparticular[i].subject%>
+            </a>
+                                            </button>
+                                            <button class="btn btn-light btn-sm" id="<%=toberankedparticular[i]._id%>" value="<%=toberankedparticular[i].subject%>">Join</button>
+                                            <br>
+                                            <br>
+
+
+                                            <script>
+                                                $(document).ready(function() {
+                                                    // Here the commented things are not working
+                                                    var button = "<%=user%>"
+                                                    $("#<%=toberankedparticular[i]._id%>").on('click', function() {
+                                                        var value = {
+                                                            button: "<%=toberankedparticular[i].subject%>"
+                                                        }
+                                                        console.log(button);
+                                                        $("#<%=toberankedparticular[i]._id%>").html("Joined");
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            url: "/requestjoin/<%=toberankedparticular[i]._id%>",
+                                                            data: {
+                                                                button: button
+                                                            },
+                                                            success: function(data) {
+                                                                console.log(button);
+
+                                                            },
+                                                            err: function() {
+                                                                console.log("Failed to upload");
+                                                            }
+
+                                                        })
+                                                    })
+
+                                                })
+                                            </script>
+                            </li>
+                            <%};%>
+                                <%};%>
+                </ol>
+            </div>
+            <div class="advertisement">
+            </div>
+
+            <%-include("partials/footer"); -%>

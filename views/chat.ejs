@@ -1,0 +1,46 @@
+<%-include("partials/header"); -%>
+
+    <head>
+
+        <title>Forumn</title>
+
+    </head>
+
+
+
+
+    <head>
+        <title>Hello world</title>
+        <link rel="stylesheet" href="/css/chatting.css">
+    </head>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
+
+
+    <body>
+        <input id="name" type="text" name="name">
+        <button class="btn btn-primary" type="button" name="button" onclick="setUsername()">
+         Suggestion
+      </button>
+    </body>
+    <br>
+    <!-- //for(var i=0;i<post.chat.length)> -->
+
+    <div id="message-container">
+        <%msg.forEach(function(posts){%>
+            <%for(var i=0;i<posts.chat.length;i++){%>
+                <h6>
+                    <%=posts.chat[i].author%> :
+                        <%=posts.chat[i].message%>
+                </h6>
+                <%}%>
+
+
+
+                    <% }); %>
+    </div>
+
+
+    </html>

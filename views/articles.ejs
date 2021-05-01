@@ -1,0 +1,88 @@
+<%-include("partials/header"); -%>
+    <%items.forEach(function(items){%>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <div class="entire-home-page ">
+            <div class="posts">
+                <div class="writepost">
+                    <a href="/compose">
+                        <%if(items._id==user){%>
+                            <%if(items.profileimage){%>
+                                <img src="uploads/<%=items.profileimage%>" style="width:35px; height: 35px; float: left; border-radius: 50%;"> <input class="form-control" type="text" placeholder="Create Post" style="width:500px; float: left;">
+                                <%}else{%>
+                                    <div class="input-group">
+                                        <img src="<%=items.googleprofileimage%>" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Create Post" style="width:500px; float: left;">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="far fa-image"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                        </div>
+                                    </div>
+                                    <%};%>
+                                        <%};%>
+                    </a>
+                </div>
+                <%});%>
+                    <%  posts.forEach(function(post){ %>
+                        <div class="home3">
+                            <h8>
+                                <emphasize> ✒ Posted By
+                                    <%=//post.author.username%> on
+                                        <%=post.Date%>
+                                </emphasize>
+                            </h8>
+                            <h6> <strong> Topic: <%= post.topic%> </strong>
+                            </h6>
+                            <h6>
+                                <%= post.title%>
+                            </h6>
+                            <%if(post.postimage){%>
+                                <img src="./uploads/<%=post.postimage%>" style="width: 100%;">
+                                <%};%>
+                                    <p>
+                                        <%=post.content%>
+                                            <%= //post.content.substring(1,2000)+"...";%>
+                                                <a href="/posts/<%=post._id%>">
+                                                    <h6>Load entire page...</h6>
+                                                </a>
+
+                                    </p>
+
+                                    <div class="form-group">
+                                        <button id="<%=post._id%>" class="btn btn-outline-danger btn-sm" value="<%=post._id%>"> <i class="far fa-heart"></i> </button>
+
+                                        <h7 class="<%=post._id%>" name="rating">
+                                            <%=post.like.length%> Rating
+                                        </h7>
+                                    </div>
+                                    <script>
+                                        $(document).ready(function() {
+                                            var $likes = $('.<%=post._id%>');
+                                            var $incrementbyone = parseInt("<%=post.like.length%>") + 1;
+                                            $('#<%=post._id%>').on('click', function() {
+                                                console.log($likes);
+                                                console.log($incrementbyone);
+                                                console.log($('#<%=post._id%>').val());
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/like/<%=post._id%>",
+                                                    data: this.response,
+                                                    success: function(data) {
+                                                        if (data.status == "error") {
+                                                            alert(data.message);
+                                                        } else {
+                                                            $likes.html("Rating: " + $incrementbyone)
+                                                        }
+                                                    },
+                                                    err: function() {
+                                                        console.log("Unable to send post request");
+                                                    }
+                                                })
+                                            })
+
+                                        })
+                                    </script>
+
+                        </div>
+                        <%});%>
+            </div>
+        </div>

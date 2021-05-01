@@ -1,0 +1,25 @@
+the forumns where you have joined till now
+
+<div class="noposts">
+    <!-- Reverse traversal -->
+
+    <%if(Comm.length>0){%>
+        <%for(var i=Comm.length-1;i>=0;i--){%>
+            <%if(Comm[i].comimage){%>
+                <img src="/uploads/<%=Comm[i].comimage%>" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                <%}else{%>
+                    <img src="cartoon.jpg" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                    <%};%>
+                        <a href="/blank/<%=Comm[i]._id%>">
+                         <button class="btn btn-light btn-sm text-left" style="float: left; width: 60%; background-color:  whitesmoke;" value="<%=Comm[i]._id%>" name="btn" onclick="this.form.submit()">
+                         /<%=Comm[i].subject%></a></button>
+                        <form action="/requestjoin/<%=Comm[i]._id%>" method="POST">
+                            <button class="btn btn-primary btn-sm" style="float: left;" id="<%=Comm[i]._id%>" value="<%=Comm[i].subject%>">Join</button>
+                        </form>
+                        <br><br>
+
+
+
+                        <%};%>
+                            <%}%>
+</div>

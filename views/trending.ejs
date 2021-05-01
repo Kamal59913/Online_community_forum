@@ -1,0 +1,62 @@
+<%-include("partials/header"); -%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class="posts">
+        <div class="forumnsclassstyle2">
+            <h6> Trending Communities </h6>
+        </div>
+        <!-- because we want to show only last 5 inserted Forumns -->
+        <ol class="listtrending">
+            <%for(var i=toberanked.length-1;i>=0;i--){%>
+                <li>
+                    <%if(toberanked[i].comimage){%>
+                        <img src="/uploads/<%=toberanked[i].comimage%>" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                        <%}else{%>
+                            <img src="cartoon.jpg" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                            <%};%>
+                                <a href="/blank/<%=toberanked[i]._id%>" style="color: #000000; text-decoration: none">
+        <button id="btnf" class="btn btn-light btn-sm text-left"value="<%=toberanked[i]._id%>" name="btn" onclick="this.form.submit()">
+        /<%=toberanked[i].subject%>
+</a>
+                                </button>
+                                <button class="btn btn-light btn-sm" id="<%=toberanked[i]._id%>" value="<%=toberanked[i].subject%>">Join</button>
+                                <br>
+                                <br>
+
+
+                                <script>
+                                    $(document).ready(function() {
+                                        // Here the commented things are not working
+                                        var button = "<%=user%>"
+                                        $("#<%=toberanked[i]._id%>").on('click', function() {
+                                            var value = {
+                                                button: "<%=toberanked[i].subject%>"
+                                            }
+                                            console.log(button);
+                                            $("#<%=toberanked[i]._id%>").html("Joined");
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/requestjoin/<%=toberanked[i]._id%>",
+                                                data: {
+                                                    button: button
+                                                },
+                                                success: function(data) {
+                                                    console.log("HiHiHi" + button);
+
+                                                },
+                                                err: function() {
+                                                    console.log("Failed to upload");
+                                                }
+
+                                            })
+                                        })
+
+                                    })
+                                </script>
+                </li>
+                <%};%>
+        </ol>
+        <div class="viewall">
+            <a href="/forumns" style="color: #ffffff; text-decoration: none">View all Forumns</a>
+        </div>
+
+    </div>

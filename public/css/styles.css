@@ -1,0 +1,584 @@
+    html,
+    body {
+        /* so that the footer stay at bottom */
+        position: relative;
+        background: rgb(235, 238, 241);
+        height: 100%;
+    }
+    
+    .forumnsclassstyle {
+        /* background-color: #4431ee; */
+        background-image: url("blur.jpg");
+        background-size: cover;
+        color: rgb(229, 226, 226);
+        height: 70px;
+        margin: 0;
+        padding-top: 45px;
+        text-align: center;
+    }
+    
+    .forumnsclassstyle4 {
+        background-size: cover;
+        background: rgb(206, 202, 202);
+        height: 70px;
+        margin: 0;
+        padding-top: 45px;
+        text-align: center;
+    }
+    
+    .forumnsclassstyle5 {
+        /* background-color: #4431ee; */
+        background-image: url("book.jpg");
+        background-size: cover;
+        color: white;
+        height: 70px;
+        margin: 0;
+        padding-top: 45px;
+        text-align: center;
+    }
+    
+    .forumnsclassstyle3 {
+        /* background-color: #4431ee; */
+        background-image: url("health.png");
+        background-size: cover;
+        color: #fff;
+        height: 70px;
+        margin: 0;
+        padding-top: 22px;
+        text-align: center;
+    }
+    
+    .recentforumns {
+        background: white;
+        box-shadow: 0px 1px 1px 1px #ccc;
+        padding-left: 2%;
+    }
+    
+    .postsforum {
+        width: 12.5%;
+        height: 600px;
+        min-height: 600px;
+        float: left;
+        margin-left: 19.5%;
+        margin-top: 5%;
+        margin-bottom: 10%;
+        overflow: scroll;
+    }
+    
+    .forumns2 {
+        width: 18.1%;
+        height: 130px;
+        position: absolute;
+        top: 80px;
+        right: 60px;
+        min-height: 390px;
+        box-shadow: 0px 1px 1px 1px #ccc;
+        background-color: white;
+        margin-left: 2%;
+        border-radius: 1.5%;
+    }
+    
+    .trending2 {
+        width: 18.1%;
+        height: 130px;
+        position: absolute;
+        top: 480px;
+        right: 60px;
+        min-height: 390px;
+        box-shadow: 0px 1px 1px 1px #ccc;
+        background-color: white;
+        margin-left: 2%;
+        border-radius: 1.5%;
+    }
+    
+    .helpf {
+        width: 18.1%;
+        height: 130px;
+        position: absolute;
+        top: 880px;
+        right: 60px;
+        min-height: 390px;
+        box-shadow: 0px 1px 1px 1px #ccc;
+        background-color: white;
+        margin-left: 2%;
+        border-radius: 1.5%;
+    }
+    
+    .topcommunities {
+        width: 36.5%;
+        height: available;
+        min-height: 600px;
+        float: left;
+        margin-left: 1%;
+        margin-top: 5%;
+        margin-bottom: 10%;
+        overflow: scroll;
+        background: white;
+    }
+    
+    .forumnsclassstyle2 {
+        /* background-color: #4431ee; */
+        background-image: url("blur3.jpg");
+        background-size: cover;
+        color: #fff;
+        height: 70px;
+        margin: 0;
+        padding-top: 45px;
+        text-align: center;
+    }
+    
+    .listtrending {
+        margin-left: 35%;
+    }
+    
+    .reportbutton {
+        float: right;
+        margin-top: -6%;
+        height: 10px;
+        background: grey;
+        margin-right: 10px;
+    }
+    
+    .reportstyling {
+        width: 646px;
+        background: rgb(255, 255, 255);
+        box-shadow: 0px 3px 5px 10px #ccc;
+        padding-left: 7%;
+        padding-top: 2.7%;
+        padding-bottom: 2.7;
+    }
+    
+    .viewall {
+        background-color: rgb(107, 107, 214);
+        width: 96%;
+        height: 30px;
+        float: left;
+        box-shadow: 0px 1px 1px 1px #ccc;
+        position: relative;
+        right: 0;
+        margin-top: -4.7%;
+        margin-right: 17.9%;
+        margin-left: 2%;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        text-align: center;
+    }
+    
+    .viewall2 {
+        width: 18.1%;
+        height: 100px;
+        min-height: 390px;
+        float: left;
+        box-shadow: 0px 1px 1px 1px #ccc;
+        background-color: white;
+        border-collapse: collapse;
+        position: relative;
+        margin-right: 17.9%;
+        margin-left: 2%;
+        margin-top: 2%;
+        border-radius: 1.5%;
+        overflow-y: hidden;
+    }
+    
+    .trending {
+        width: 18.1%;
+        height: 100px;
+        min-height: 390px;
+        float: left;
+        box-shadow: 0px 1px 1px 1px #ccc;
+        background-color: white;
+        border-collapse: collapse;
+        position: relative;
+        margin-right: 17.9%;
+        margin-left: 2%;
+        margin-top: 2%;
+        border-radius: 1.5%;
+        overflow-y: hidden;
+    }
+    
+    .blankbar {
+        background: rgb(248, 39, 39);
+        width: 100%;
+        height: 82px;
+        min-height: 50px;
+        float: left;
+        margin-top: 4%;
+        text-align: center;
+        color: #fff;
+    }
+    
+    #title {
+        background-color: #7bb0ff;
+        height: 80%;
+    }
+    
+    #second {
+        height: 70%;
+        font-family: 'Yusei Magic', sans-serif;
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-top: 10%;
+    }
+    
+    #third {
+        background: #000;
+        color: #fff;
+        height: 60%;
+        font-family: 'Arial';
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 10%;
+    }
+    
+    .logindiv {
+        width: 500px;
+        margin-left: 20%;
+        margin-top: 10%;
+    }
+    
+    #abcd {
+        margin-left: 35%;
+    }
+    
+    .logingoogle {
+        width: 600px;
+        margin-left: 19%;
+        margin-top: 1%;
+    }
+    
+    .loginpage {
+        font-family: 'Yusei Magic', sans-serif;
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-top: 10%;
+        margin-left: 10%;
+    }
+    
+    #btnf {
+        align-items: stretch;
+        background-color: whitesmoke;
+        color: black;
+        width: 150px;
+        border-radius: 7%;
+        display: inline-block;
+    }
+    
+    div:empty {
+        background: lime;
+    }
+    
+    h4 {
+        color: black;
+    }
+    
+    .yellow {
+        color: black;
+        margin-left: 5%;
+    }
+    
+    .hompage {
+        margin-top: 5%;
+    }
+    
+    .container-fluid {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    
+    #roww {
+        right: -9.9%;
+        height: 8em;
+        width: 40%;
+        font-size: 2ch;
+        padding: 3em;
+        border-style: outset;
+        background-color: #bf80ff;
+        text-decoration: solid;
+    }
+    
+    #roww:hover {
+        background-color: #ac00e6;
+    }
+    
+    .row a {
+        color: white;
+        font-size: 20px;
+    }
+    
+    .noposts {
+        background-color: #ceb6b6;
+        height: 400px;
+        overflow-y: scroll;
+        border-radius: 10px;
+    }
+    
+     ::-webkit-scrollbar {
+        color: #5e5064;
+    }
+    
+    .footer-padding {
+        padding-bottom: 500px;
+    }
+    
+    .foot {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(60, 71, 94);
+        color: white;
+        text-align: center;
+        float: left;
+        height: 200px;
+    }
+    
+    .footer p {
+        margin-top: 25px;
+        font-size: 12px;
+        color: #fff;
+    }
+    
+    #btn {
+        position: absolute;
+        bottom: 100px;
+        width: 50%;
+    }
+    
+    .navbar {
+        position: fixed;
+        width: 100%;
+        height: 50px;
+        z-index: 1;
+    }
+    
+    .home {
+        border: grey;
+        border-bottom: white;
+        border-radius: 2px;
+        padding-top: 12px;
+        padding-left: 18px;
+        padding-bottom: 0.1px;
+        margin-top: 14px;
+        margin-right: auto;
+        font-size: 16px;
+        box-shadow: 0px 1px 1px 1px #ccc;
+        background-color: white;
+    }
+    
+    .home3 {
+        border: rgb(56, 39, 39);
+        border-bottom: white;
+        border-radius: 2px;
+        padding: 5px;
+        margin-top: 14px;
+        /* margin-bottom: 9px; */
+        margin-right: auto;
+        font-size: 16px;
+        box-shadow: 0px 1px 1px 1px #ccc;
+        background-color: white;
+        min-height: 50px;
+    }
+    
+    ol li {
+        margin-left: -8%;
+        color: #ac00e6;
+    }
+    
+    .forumns {
+        width: 18.1%;
+        height: 130px;
+        min-height: 390px;
+        float: left;
+        box-shadow: 0px 1px 1px 1px #ccc;
+        background-color: white;
+        border-collapse: collapse;
+        position: relative;
+        margin-right: 17.9%;
+        margin-left: 2%;
+        margin-top: 5%;
+        border-radius: 1.5%;
+        overflow-y: hidden;
+    }
+    
+    .entire-home-page {
+        width: available;
+        height: available;
+    }
+    
+    .posts {
+        width: 42.5%;
+        height: available;
+        min-height: 650px;
+        float: left;
+        margin-left: 19.5%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+    
+    .posts2 {
+        width: 70%;
+        height: available;
+        min-height: 650px;
+        float: left;
+        margin-left: 14%;
+        margin-top: 2%;
+        margin-bottom: 10%;
+        background-color: rgb(183, 196, 208)
+    }
+    
+    .writepost {
+        margin-bottom: 7%;
+    }
+    
+    .sidenav {
+        margin-top: 30%;
+        width: 15%;
+        /* min-width: 350px; */
+        height: available;
+        min-height: 200px;
+        float: left;
+        box-shadow: 0px 1px 1px 1px #ccc;
+        background-color: white;
+        border-collapse: collapse;
+        position: fixed;
+        right: 0;
+        margin-right: 1%;
+        border-radius: 1.9%;
+    }
+    
+    .messagesender {
+        text-emphasis: none;
+        /* background-color: rgb(197, 238, 238); */
+    }
+    
+    #message {
+        /* background-color: rgb(240, 250, 252); */
+        text-decoration: solid;
+        border: none;
+        height: available;
+    }
+    
+    .replycomments {
+        margin-top: 5%;
+        margin-bottom: 1%;
+    }
+    
+    .replysection {
+        margin-left: 50px;
+        border-left: solid rgb(208, 201, 201) 1px;
+        padding-left: 20px;
+        max-height: 600px;
+        overflow: scroll;
+    }
+    
+    .replylayer2 {
+        margin-left: 26px;
+        border-left: solid rgb(208, 201, 201) 1px;
+        padding-left: 20px;
+        max-height: 600px;
+        overflow: scroll;
+    }
+    
+    .replylayer3 {
+        margin-left: 26px;
+        border-left: solid rgb(208, 201, 201) 1px;
+        padding-left: 20px;
+        max-height: 600px;
+        overflow: scroll;
+    }
+    
+    .replylayer4 {
+        margin-left: 26px;
+        border-left: solid rgb(208, 201, 201) 1px;
+        padding-left: 20px;
+        max-height: 600px;
+        overflow: scroll;
+    }
+    
+    .reportrecieved {
+        float: left;
+        margin-top: 5%;
+        border: 1px solid rgb(23, 23, 23);
+        width: 400px;
+        min-height: 670;
+        height: 670px;
+        padding-left: 1%;
+    }
+    
+    .admin {
+        width: 500px;
+        height: available;
+        min-height: 670px;
+        height: 670;
+        float: left;
+        margin-left: 7%;
+        margin-top: 5%;
+        border: 1px solid black;
+        overflow: scroll;
+    }
+    
+    .forumadmin {
+        float: left;
+        margin-top: 5%;
+        border: 1px solid rgb(23, 23, 23);
+        width: 400px;
+        min-height: 670;
+        height: 670px;
+        padding-left: 1%;
+    }
+    
+    div:empty {
+        display: none;
+    }
+    
+    #likecount,
+    #dislikecount {
+        border: none;
+        outline: none;
+    }
+    
+    .like:hover {
+        color: #7f00ba;
+    }
+    
+    .dislike:hover {
+        color: red;
+    }
+    
+    .post {
+        border: 1px;
+        width: 65%;
+        min-height: 50px;
+        margin-left: 4%;
+        font-size: 2ch;
+        padding: 20px;
+        border-width: 2px;
+        background: white;
+    }
+    
+    .bottomcomment {
+        width: 82%;
+        margin-top: -1%;
+        background: white;
+        margin-left: 4%;
+        padding-left: 2%;
+        padding-right: 0.7%;
+    }
+    
+    .box {
+        border: 5px solid transparent;
+        margin-right: 20px;
+        background-clip: padding-box;
+    }
+    
+    .fas fa-plus {
+        color: red;
+    }
+    
+    .hompage {
+        color: #7f00ba;
+        margin-left: 200px;
+        margin-top: 2%;
+    }

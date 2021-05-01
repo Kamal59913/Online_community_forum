@@ -1,0 +1,97 @@
+<%- include('partials/header') %>
+    <div class="admin">
+        <h5> All the Registered Users </h5>
+        <%users.forEach(function(users){%>
+            <p>
+                <strong>   Username: </strong>
+                <%=users.name%>
+                    <strong>  Email: </strong>
+                    <%=users.username%>
+                        <form action="/removeuser" method="POST">
+                            <!-- <select id="cars" name="users">
+                  <option value="volvo">make Moderator</option>
+                  <option value="hi" name="value2">Delete User</option>
+                  <option value="fiat">Delete userposts</option>
+                 </select> -->
+                            <input type="checkbox" value="<%=users._id%>" name="value2"> Delete User
+                            <input type="checkbox" value="<%=users._id%>" name=" value1"> Delete User's Posts
+                            <input type="submit" class="btn btn-danger btn-sm">
+                        </form>
+
+            </p>
+            <%});%>
+                <h5> Posts and Creators: </h5>
+                <%comm.forEach(function(post){%>
+                    <%for(var i=0;i<post.communityposts.length;i++){%>
+                        <%=post.category%>:
+                            <%=post.communityposts[i].title%>
+                                <form action="/removepost/<%=post._id%>/<%=post.communityposts[i]._id%>" method="POST">
+                                    <strong>  <%=post.communityposts[i]._id%></strong>
+                                    <input type="checkbox" value="<%=post.communityposts[i]._id%>" name="posttobedeleted"> Delete This Post
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i> </button>
+                                </form>
+                                <%};%>
+                                    <br>
+                                    <%});%>
+
+    </div>
+
+    <div class="reportrecieved">
+        <h5>Posts/Users With Reports</h5>
+        <%comm.forEach(function(post){%>
+            <%for(var i=0;i<post.communityposts.length;i++){%>
+                <%if(post.communityposts[i].report.length>0){%>
+                    <br>
+                    <%=post.communityposts[i].title%><br>
+                        <%for(var j=0;j<post.communityposts[i].report.length;j++){%>
+                            <h8>Complaints recieved:</h8>
+                            <ol>
+                                <li>
+                                    <%=post.communityposts[i].report[j].reason%><br> Description:
+                                        <%=post.communityposts[i].report[j].description%><br>
+                                </li>
+                            </ol>
+
+                            <%}%>
+
+                                <form action="/removepost/<%=post._id%>/<%=post.communityposts[i]._id%>" method="POST">
+                                    <input type="checkbox" value="<%=post.communityposts[i]._id%>" name="posttobedeleted"> Delete This Post
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i> </button>
+                                </form>
+                                writer:
+                                <%=post.communityposts[i].writer.name%>
+                                    <%}%>
+                                        <%};%>
+                                            <br>
+                                            <%});%>
+
+    </div>
+    <div class="forumadmin">
+        <h5> Contributors to Forumns </h5>
+        <%comm.forEach(function(com){ %>
+            <p>
+                <b><%=com.subject%> </b>Created By
+                <b>  <%=//com.creator.name%></b>
+            </p>
+            <form action="/deleteforumn" method="POST">
+                <select id="cars" name="users">
+<option value="<%=com._id%>">Remove Forumn</option>
+</select>
+                <button class="btn btn-primary btn-sm" type="submit"> <i class="far fa-trash-alt"></i> </button>
+            </form>
+            <form action="/removeusers" method="POST">
+                <select id="cars" name="users">
+<option value="<%=com._id%>">Remove Users</option>
+</select>
+
+                <button class="btn btn-primary btn-sm"> <i class="far fa-trash-alt"></i> </button>
+            </form>
+            <form action="/removeposts" method="POST">
+                <select id="cars" name="users">
+<option value="<%=com._id%>">Remove Posts</option>
+</select>
+                <button class="btn btn-primary btn-sm"> <i class="far fa-trash-alt"></i> </button>
+            </form>
+
+            <%});%>
+    </div>

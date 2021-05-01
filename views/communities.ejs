@@ -1,0 +1,33 @@
+<%-include("partials/header");-%>
+    <%posts.forEach(function(community){%>
+        <div class="posts">
+            <h4><a href="/forumns">Search</a></h4>
+            <%for(var i=0;i<community.members.length;i++){%>
+                <%if(userId==community.members[i]._id){%>
+                    <form name="" method="POST" action="/communities/<%=community._id%>" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h4>
+                                Forumn:
+                                <button class="btn btn-warning btn-lg" disabled><%=community.subject%> </button>
+                            </h4>
+                            <label name="postTitle">Title</label>
+                            <input class="form-control" type="text" name="postTitle">
+                            <label name="postarticle">Post</label>
+                            <textarea class="form-control" name="postarticle" rows="8" cols="80"></textarea>
+                        </div>
+                        <div class="custom-file mb-3">
+                            <input type="file" name="file" id="file" class="custom-file-input" />
+                            <label for="file" class="custom-file-label"></label>
+                        </div>
+                        <br>
+
+                        <br>
+                        <button class="btn btn-primary" type="submit" name="button" value="">Publish</button>
+                    </form>
+                    <h1>
+                    </h1>
+                    <%};%>
+                        <%};%>
+        </div>
+        <%});%>
+            <%-include("partials/footer"); -%>

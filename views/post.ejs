@@ -1,0 +1,149 @@
+<%-include("partials/header"); -%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class="posts2">
+        <div id="write">
+            <i class="fas fa-quote-left"></i> <input class="form-control" type="text" placeholder="Write Post">
+        </div>
+        <%  posts.forEach(function(post){ %>
+            <div class="post">
+                <h4>
+                    <strong><%=post.topic%></strong>
+                </h4>
+                <h2>
+                    <%= post.title%>
+                </h2>
+                <p>
+                    <%= post.content%>
+                </p>
+                <h5>
+                    ✍ By
+                    <strong> <emphasise> <%=//post.author.name%> </emphasise> </strong> 🦁 Email Id:
+                    <%=//post.author.username%>
+
+                </h5>
+
+            </div>
+
+
+            <div class="form-group">
+                <p id="data">
+                    <%=post.like.length%>
+                </p>
+                <button id="like" class="btn btn-outline-danger btn-sm" name="upvote" value="<%=post._id%>"> <i class="far fa-heart"></i> Upvote</button>
+                <!-- So previously i was writing this line which is wrong because it sends the post author name -->
+                <!-- <button name="upvote" value="<%=//post.author._id%>" onclick="this.form.submit()">Upvote</button> -->
+            </div>
+
+            <div>
+                <form action="/unlike" method="POST">
+                    <button id="unlike" class="btn btn-outline-warning btn-sm" name="unvote" value="<%=post._id%>" onclick="this.form.submit()"><i class="fas fa-heart-broken"></i> Unvote</button>
+                </form>
+            </div>
+
+            <div>
+                <!-- <p id="sata">
+                    <%=//post.dislike.length%>
+                </p> -->
+                <div class="form-group">
+                    <!-- <button id="dislike" class="btn btn-light btn-sm" name="downvote" value="<%=//post._id%>"> <i class="fas fa-caret-right fa-4x"></i><br>Downvote</button> -->
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <input type="text" name="msgcontent" id="msgcontent">
+                <button class="btn btn-info" name="message" id="message">That is it</button>
+                <p id="textarea">
+                    <%=name%>
+                </p>
+            </div>
+
+
+            <script>
+                $(document).ready(function() {
+                    $data = $("#data");
+                    $sata = $("#sata")
+                    $val = $("#like").val();
+                    $val2 = $("#dislike").val();
+                    $('#like').on('click', function() {
+                        $incrementlikebyone = parseInt("<%=post.like.length%>") + 1;
+                        // $decrementdisbyone = parseInt("<%=//post.dislike.length%>") - 1;
+                        // $incrementdisbyone = parseInt("<%=//post.dislike.length%>") + 1;
+                        //$decrementlikebyone = parseInt("<%=//post.like.length%>") - 1;
+                        console.log("Hi");
+                        console.log($val);
+                        // console.log($incrementlikebyone);
+                        console.log($data);
+                        $.ajax({
+                            type: 'POST',
+                            url: '/like/<%=post._id%>',
+                            data: this.response,
+                            success: function(data) {
+                                if (data.status == "error") {
+                                    alert("You have already likde it" + data.liked)
+                                } else {
+                                    console.log("Success");
+                                    $data.html($incrementlikebyone);
+                                }
+                            }
+                        })
+                    })
+
+
+                });
+            </script>
+            <script>
+                $(document).ready(function() {
+
+                    $textarea = $("#textarea");
+                    $msgcontent = $("#msgcontent");
+                    $('#message').on('click', function() {
+                        // var order = {
+                        //     input: $msgcontent.val()
+                        // }
+                        var input = $msgcontent.val();
+                        console.log($msgcontent.val());
+                        $.ajax({
+                            type: 'POST',
+                            url: "/discussion/<%=post._id%>",
+                            data: { //Whatever we want to send we write it right here
+                                input: input //this is how we send value
+                            },
+                            success: function() {
+                                console.log("<%=post._id%>");
+                                console.log("Sucess");
+                                $textarea.append("<b><br> <%=name%>:</b> <p>" + $msgcontent.val() + "</p>")
+                            }
+                        })
+                    })
+                })
+            </script>
+            </body>
+
+            <%for(var i=0;i<post.comments.length;i++) {%>
+                <div class="messagesender">
+                    <b>
+                        <em>   <%=post.comments[i].username.name%>: </em>
+                    </b>
+                </div>
+                <div class="message">
+                    <p>
+                        <%=post.comments[i].message%>
+                    </p>
+                </div>
+                <%}%>
+                    <a href="/chat"><i class="fas fa-comment-dots"></i>
+                    Public suggestion/Review this about this website </a>
+                    <div class="custom-control custom-checkbox">
+                        <form action="/delete" method="POST" class="item">
+                            <input id="customCheck1" type="checkbox" name="checkbox" value="<%=post._id%>" onChange="this.form.submit()">
+                            <label for="customCheck1">❌ Click here to delete This Article</label>
+                        </form>
+                    </div>
+
+                    <% }); %>
+
+
+    </div>
+
+    <%-//include("partials/footer"); -%>

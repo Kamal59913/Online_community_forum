@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <!-- <title><img src="/logodemo.png"></title> -->
+    <meta charset="utf-8">
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/chatting.css">
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <!-- <img src="/public/trial4.png" style="height: 40px;"> -->
+            <i class="fas fa-folder-open"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home feeds <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/articles">Article Feeds <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Options
+              </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/webdev">Web Dev</a>
+                        <a class="dropdown-item" href="/androiddev">Android Dev</a>
+                        <a class="dropdown-item" href="/java">Java</a>
+                        <a class="dropdown-item" href="/freelanching">freelanching</a>
+                        <a class="dropdown-item" href="/life">LifeStyle</a>
+                        <a class="dropdown-item" href="/music">Music</a>
+                        <a class="dropdown-item" href="/photography">Photography</a>
+                        <a class="dropdown-item" href="/cplusplus">C++</a>
+                        <a class="dropdown-item" href="/mern">MERN</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/compose">Something else...</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/forumns">Forumn</a>
+                </li>
+
+            </ul>
+
+
+            <a class="nav-link" href="/users"><i class="fas fa-plus"></i> Manage Users/ADMIN</a>
+            <a class="nav-link" href="/moderator"><i class="fas fa-plus"></i> MODERATOR LOGIN</a>
+            <a class="nav-link" href="/registering"> Sign Up</a>
+
+
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-snowman"></i>MyAccount
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/MyAccount">Create Forumn</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/Settings">Manage Your Profile</a>
+                    <a class="dropdown-item" href="/joined forum">Joined Forumns </a>
+                    <a class="dropdown-item" href="/MyAccount">Create community </a>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/logout">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <%comm.forEach(function(com){%>
+        <div class="blankbar">
+            <h2>
+                <%=com.subject%>
+            </h2>
+        </div>
+        <%});%>
+            <%items.forEach(function(items){%>
+                <%if(items._id==userId){%>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <div class="posts">
+                        <a href="/communities/<%=comId%>">
+                            <div id="write">
+                                <%if(items.profileimage){%>
+                                    <img src="uploads/<%=items.profileimage%>" style="width:35px; height: 35px; float: left; border-radius: 50%;"> <input class="form-control" type="text" placeholder="Create Post" style="width:500px; float: left;">
+                                    <%}else{%>
+                                        <div class="input-group">
+                                            <img src="<%=items.googleprofileimage%>" style="width:35px; height: 35px; float: left; border-radius: 50%;">
+                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Create Post" style="width:500px; float: left;">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="far fa-image"></i></span>
+                                                <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                            </div>
+                                        </div>
+                                        <%}%>
+                            </div>
+                            <%}%>
+                                <%});%>
+                        </a>
+                        <br><br>
+                        <%comm.forEach(function(com){%>
+                            <%if(com.members.length>=1){%>
+                                <%=com.members.length%> member(s) have Connected
+                                    <%}else{%>
+                                        <h1> Doesn't Have any members</h1>
+                                        <%};%>
+
+                                            <div class="no">
+                                                <!-- because we want to show only last 5 inserted Forumns -->
+                                                <button class="btn btn-light btn-sm" id="<%=com._id%>" value="<%=com.subject%>">Join</button>
+                                                <br>
+                                                <br>
+                                                <script>
+                                                    $(document).ready(function() {
+                                                        var button = "<%=userId%>"
+                                                        var $append = $('.append')
+                                                        $("#<%=com._id%>").on('click', function() {
+                                                            var value = {
+                                                                button: "<%=com.subject%>"
+                                                            }
+                                                            console.log(button);
+                                                            $("#<%=com._id%>").html("Joined");
+                                                            $.ajax({
+                                                                type: "POST",
+                                                                url: "/requestjoin/<%=com._id%>",
+                                                                data: {
+                                                                    button: button
+                                                                },
+                                                                success: function(data) {
+                                                                    console.log("success");
+
+                                                                }
+                                                            });
+                                                        })
+
+                                                    })
+                                                </script>
+                                                <%});%>
+                                                    <%comm.forEach(function(com){%>
+                                                        <%for(var i=0;i<com.communityposts.length;i++){%>
+                                                            <div class="home">
+                                                                <h6>
+                                                                    <emphasize> ✒ comed By
+                                                                        <%=com.communityposts[i].writer.name%>
+                                                                    </emphasize>
+                                                                </h6>
+                                                                <h5>
+                                                                    From
+                                                                    <%=com.subject%>'s Forumn
+                                                                </h5>
+
+                                                                <h4> <strong> <%= com.communityposts[i].title%> </strong>
+                                                                </h4>
+                                                                <p>
+                                                                    <%= com.communityposts[i].postcontent.substring(1,2000)+"...";%>
+                                                                        <a href="/composts/<%=com._id%>/<%=com.communityposts[i]._id%>">Read More</a>
+                                                                </p>
+                                                                <p>
+                                                            </div>
+                                                            <%};%>
+                                                                <%});%>
+                                            </div>
+                                            <%-include("partials/footer"); -%>
