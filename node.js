@@ -214,14 +214,7 @@
             }
         });
     });
-
-    app.get("/del", function(req, res) {
-        Item.find({}, function(err, people) {
-            res.render("del", { hey: people });
-        });
-    });
-
-    app.post("/compose/:itemsId", upload, function(req, res) {
+  app.post("/compose/:itemsId", upload, function(req, res) {
         if (req.isAuthenticated()) {
             if (!req.file) {
                 const post = new Post({
