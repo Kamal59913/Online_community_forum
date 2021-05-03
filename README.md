@@ -7,6 +7,6 @@
 <h2> Technologies used </h2>
 <p> Used Node.js, express.js-RESTFul-API’s, EJS templating in the
 client side. Passport.js authentication strategies, OAuth is used
-for implementing authentication <p>
+for implementing authentication. <p>
 <p> Used MongoDB database in the system and heavily worked with
 mongoose Object Data Modelling library for MongoDB. </p>
