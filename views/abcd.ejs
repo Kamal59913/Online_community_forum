@@ -1,4 +1,3 @@
-Hello There Hi how are you
 <script src="">
 </script>
 
@@ -30,7 +29,7 @@ Hello There Hi how are you
         $(document).ready(function() {
 
             var $loop = $('.<%=loop._id%>');
-            var $val = parseInt("<%=loop.rating.length%>") + 1; //+1 added already before even it happened
+            var $val = parseInt("<%=loop.rating.length%>") + 1;
             $('#<%=loop._id%>').on('click', function() {
                 console.log($val);
                 $loop.html("Rating: " + $val)
@@ -44,7 +43,7 @@ Hello There Hi how are you
             // var $sata = $('#sata');
             // var $input = $('#input');
             $('#<%=loop._id%>').on('click', function() {
-                console.log($('#<%=loop._id%>').val()); //Such a briliat discovery
+                console.log($('#<%=loop._id%>').val()); 
                 var order = {
                     id: $('#<%=loop._id%>').val()
                 }
@@ -54,7 +53,7 @@ Hello There Hi how are you
                     data: order, //data field is extremely required
                     success: function(data) {
                         console.log("success");
-                        //  $hi.html("lol")
+                       
                     }
                 })
             })
