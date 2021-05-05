@@ -10,3 +10,15 @@ client side. Passport.js authentication strategies, OAuth is used
 for implementing authentication. <p>
 <p> Used MongoDB database in the system and heavily worked with
 mongoose Object Data Modelling library for MongoDB. </p>
+
+<h2> Installing/Getting started </h2>
+In hyper terminal/git bash
+```shell
+git clone https://github.com/Kamal59913/Online_community_forum
+```
+```shell
+cd Online_community_forum
+```
+```shell
+nodemon node.js
+```
