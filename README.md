@@ -25,3 +25,5 @@ cd Online_community_forum
 ```shell
 nodemon node.js
 ```
+##Snapshots:
+![2021-01-12 (1)](https://user-images.githubusercontent.com/70695845/117393785-832d7a80-af12-11eb-9993-b29be10dac26.png)
