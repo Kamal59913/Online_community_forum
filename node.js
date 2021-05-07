@@ -1,14 +1,14 @@
     require('dotenv').config();
     const express = require("express");
     const app = express();
-    ///////////////////////////////////
+    //////////////////////
     const http = require("http").createServer(app);
     const nodemon = require("nodemon");
     ///////////////////////////////////
     const routes = require("./routes/routes");
-    ///////////////////////////////////
+    /////////////////////////////////////////
     const mongoose = require("mongoose")
-        ///////////////
+    ///////////////
     const expressSession = require("express-session");
     const session = require("express-session");
     const passport = require("passport");
