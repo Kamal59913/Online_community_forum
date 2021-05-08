@@ -6,7 +6,7 @@
 <p> up-voting and commenting systems on Community-posts are well implemented. </p>
 
 <h2> Technologies used </h2>
-<p> Used Node.js, express.js-RESTFul-API’s, EJS templating in the
+<p> Used Node.js, express.js-RESTFul-API’s, jQuery, EJS templating in the
 client side. Passport.js authentication strategies, OAuth is used
 for implementing authentication. <p>
 <p> Used MongoDB database in the system and heavily worked with
